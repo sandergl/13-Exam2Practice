@@ -43,8 +43,8 @@ def main():
     run_test_append_string()
     run_test_double()
     run_test_shrink()
-#     run_test_double_then_shrink()
-#     run_test_reset()
+    run_test_double_then_shrink()
+    run_test_reset()
 #     run_test_steal()
 #     run_test_get_history()
 #     run_test_combined_box()
@@ -98,6 +98,8 @@ class Box(object):
             self.contents = ''
         else:
             self.contents = contents
+        self.contents_og = self.contents
+        self.volume_og = self.volume
         # --------------------------------------------------------------
         # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
@@ -323,8 +325,9 @@ class Box(object):
         Type hints:
           :type new_volume: int
         """
+        return len(self.double()) + len(self.shrink(new_volume))
         # --------------------------------------------------------------
-        # TODO: 6. Implement and test this function.
+        # DONE: 6. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -342,8 +345,10 @@ class Box(object):
           Changes this Box's contents and volume to whatever they were
           when this Box was constructed.
         """
+        self.contents = self.contents_og
+        self.volume = self.volume_og
         # --------------------------------------------------------------
-        # TODO: 7. Implement and test this function.
+        # DONE: 7. Implement and test this function.
         #     The testing code is already written for you (above).
         # --------------------------------------------------------------
         # --------------------------------------------------------------
